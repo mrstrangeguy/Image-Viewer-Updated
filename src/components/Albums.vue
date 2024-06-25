@@ -37,7 +37,7 @@ import Backhome from "./Backhome.vue";
 import Loadingwarning from "./Loadingwarning.vue";
 
 const albumsData = ref<albumType[]>([]);
-const isLoading = ref<boolean>(false);
+const isLoading = ref<boolean>(true);
 
 //onMounted
 onMounted(async () => {
@@ -46,7 +46,10 @@ onMounted(async () => {
   );
   const { data } = response;
 
-  if (data) albumsData.value = data;
+  if (data) {
+    albumsData.value = data;
+    isLoading.value = false;
+  }
   console.log(data);
 });
 </script>

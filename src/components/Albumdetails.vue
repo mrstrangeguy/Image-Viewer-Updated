@@ -76,11 +76,11 @@ onMounted(async () => {
     &__img__container {
       display: flex;
       justify-content: start;
-      width: 100%;
-
+    
       &__img {
         display: block;
         aspect-ratio: 1/1;
+        
       }
     }
 
@@ -123,9 +123,9 @@ onMounted(async () => {
       }
       &__title {
         &__tag {
-          font-size: 20px;
+          font-size: 28px;
           margin: 0px;
-          line-height: 22px;
+          line-height: 28px;
         }
       }
     }
