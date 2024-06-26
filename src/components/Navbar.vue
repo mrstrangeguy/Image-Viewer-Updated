@@ -1,18 +1,27 @@
 <template>
   <div class="navbar">
-    <div class="navbar__logo">Image Viewer</div>
-    <ul class="navbar__links">
-      <RouterLink class="navbar__links__link" to="/albums"
-        ><li class="navbar__links__link__line">albums</li></RouterLink
-      >
-      <RouterLink class="navbar__links__link" to="/aboutus"
-        ><li class="navbar__links__link__line">about</li></RouterLink
-      >
-      <RouterLink class="navbar__links__link" to="/contactus"
-        ><li class="navbar__links__link__line">contact us</li></RouterLink
-      >
-    </ul>
-    <i class="fa fa-bars navbar__icon"></i>
+    <div class="navbar__tophead-section">
+      <div class="container navbar__tophead-section__container">
+       <ul class="navbar__tophead-section__container__list">
+         <li class="navbar__tophead-section__container__list__line">
+          <RouterLink to="/albums" class="navbar__tophead-section__container__list__line__link">albums</RouterLink>
+         </li>
+         <li class="navbar__tophead-section__container__list__line">
+          <RouterLink to="/contactus" class="navbar__tophead-section__container__list__line__link">contact us</RouterLink>
+         </li>
+         <li class="navbar__tophead-section__container__list__line">
+          <RouterLink to="/aboutus" class="navbar__tophead-section__container__list__line__link">about us</RouterLink>
+         </li>
+       </ul>
+      </div>
+    </div>
+    <div class="navbar__bottomhead-section">
+      <div class="navbar__bottomhead-section__container">
+        <div class="navbar__bottomhead-section__container__title-logo">
+          <img src="../images/titlelogo.png" class="navbar__bottomhead-section__container__title-logo__image" alt="">
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -21,78 +30,63 @@ import { RouterLink } from "vue-router";
 </script>
 
 <style lang="scss" scoped>
-.navbar {
-  margin-bottom: 20px;
-  width: 100%;
-  background-color: white;
-  border-radius: 30px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0px 20px;
-  height: 52px;
+   .navbar {
+  
+    width: 100%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    background-color: white;
+    margin-bottom: 20px;
 
-  &__logo {
-    font-family: "Oswald", sans-serif;
-    font-size: 32px;
-    line-height: 32px;
-    padding-bottom: 4px;
-  }
+     &__tophead-section {
+      width: 100%;
+      border-top: 3px solid rgb(241, 169, 58);
+      padding: 0px 15px;
+      background-color: rgb(61, 61, 61);
 
-  &__links {
-    display: block;
-    list-style: none;
-    display: flex;
-    gap: 30px;
-    margin: 0%;
-    padding: 0%;
+      &__container {
+        &__list {
 
-    &__link {
-      text-decoration: none;
-      color: black;
+          margin: 0 auto;
+          list-style: none;
+          display: flex;
 
-      &__line {
-        background-color: lightgray;
-        display: block;
-        padding: 6px 15px;
-        border-radius: 20px;
-        cursor: pointer;
-        transition: background-color 0.3s ease, color 0.3s ease;
+          &__line {
+            
+             &__link {
+              text-decoration: none;
+              display: block;
+              padding: 10px 15px;
+              text-transform: uppercase;
+              font-size: 13px;
+              font-family: Montreal;
+              font-weight: 400;
+              line-height: 19.5px;
+              color: white;
+             }
+          }
+        }
       }
+     }
 
-      &__line:hover {
-        background-color: black;
-        color: white;
+     &__bottomhead-section {
+      &__container {
+        padding: 10px;
+        max-width: 1340px;
+        margin: 0 auto;
+        &__title-logo {
+          &__image {
+            display: block;
+            aspect-ratio: 20/15;
+            width: 100px;
+            height: 75px;
+            border-radius: 50px;
+            border: 1px solid lightgray;
+            
+          }
+        }
       }
-    }
-  }
+     } 
 
-  &__icon {
-    display: none;
-  }
-}
-
-//media query
-@media screen and (max-width: 590px) {
-  .navbar {
-    &__logo {
-      font-size: 28px;
-    }
-    &__links {
-      display: none;
-    }
-
-    &__icon {
-      display: block;
-    }
-  }
-}
-
-@media screen and (max-width: 425px) {
-  .navbar {
-    &__logo {
-      font-size: 24px;
-    }
-  }
-}
+   }
+   
 </style>

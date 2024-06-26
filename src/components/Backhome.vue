@@ -14,7 +14,9 @@ import { RouterLink } from "vue-router";
 </script>
 
 <style lang="scss" scoped>
+
 .back-to-home-container {
+  
   background-color: white;
   padding: 10px 15px;
   border-radius: 15px;

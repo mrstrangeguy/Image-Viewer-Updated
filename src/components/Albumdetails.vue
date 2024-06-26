@@ -36,15 +36,13 @@ import Backhome from "./Backhome.vue";
 const currentAlbumData = ref<albumType>();
 const route = useRoute();
 const isLoading = ref<boolean>(true);
+
+const props = defineProps(['albumData'])
+
 //onMounted
 onMounted(async () => {
-  console.log(route.params.id);
-  const response = await axios.get(
-    `https://jsonplaceholder.typicode.com/photos/${route.params.id}`
-  );
-  const { data } = response;
-  currentAlbumData.value = data;
-  if (data) isLoading.value = false;
+  
+  console.log(route.params)
 });
 </script>
 
