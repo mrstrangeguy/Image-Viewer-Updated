@@ -8,7 +8,6 @@
 <style lang="scss" scoped>
 .loading-container {
   width: 100%;
-  // min-height: 60vh;
   background-color: white;
   margin-bottom: 15px;
   border-radius: 30px;

@@ -6,11 +6,11 @@ import Contactus from "../components/Contactus.vue";
 import Albumdetails from "../components/Albumdetails.vue";
 
 const routes = [
-  { path: "/", component: Home,props:true },
-  { path: "/albums", component: Albums,props:true  },
-  { name:'albumdetails', path: "/albumdetails", component: Albumdetails,props:true  },
-  { path: "/aboutus", component: Aboutus,props:true  },
-  { path: "/contactus", component: Contactus,props:true  },
+  { path: "/", component: Home, props: true },
+  { path: "/albums", component: Albums, props: true },
+  { path: "/albums/:id", component: Albumdetails },
+  { path: "/aboutus", component: Aboutus, props: true },
+  { path: "/contactus", component: Contactus, props: true },
 ];
 
 const router = createRouter({

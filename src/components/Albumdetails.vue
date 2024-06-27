@@ -1,5 +1,5 @@
 <template>
-  <Backhome />
+  <Backhome message="Back" :url="'/albums'" />
   <Loadingwarning v-if="isLoading" />
 
   <div class="album-container" v-if="!isLoading && currentAlbumData?.url">
@@ -27,28 +27,32 @@
 <script setup lang="ts">
 import { onMounted, ref } from "vue";
 import { useRoute } from "vue-router";
-import axios from "axios";
 
 import { albumType } from "../types/albumType";
 import Loadingwarning from "./Loadingwarning.vue";
 import Backhome from "./Backhome.vue";
+import { useAlbumsStore } from "../stores/albumStorage";
+
+const albumStore = useAlbumsStore();
 
 const currentAlbumData = ref<albumType>();
 const route = useRoute();
 const isLoading = ref<boolean>(true);
 
-const props = defineProps(['albumData'])
-
 //onMounted
 onMounted(async () => {
-  
-  console.log(route.params)
+  const { id } = route.params;
+
+  currentAlbumData.value = albumStore.albums.find(
+    (elem: albumType) => `${elem.id}` === id
+  );
+  if (currentAlbumData.value) isLoading.value = false;
 });
 </script>
 
 <style lang="scss" scoped>
 .album-container {
-  // height: 15vh;
+ 
   width: fit-content;
   background-color: white;
   border-radius: 30px;
@@ -74,11 +78,10 @@ onMounted(async () => {
     &__img__container {
       display: flex;
       justify-content: start;
-    
+
       &__img {
         display: block;
         aspect-ratio: 1/1;
-        
       }
     }
 
