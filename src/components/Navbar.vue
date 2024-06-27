@@ -1,6 +1,10 @@
 <template>
   <div class="navbar">
-    <div :class="`navbar__tophead-section ${isTopHeadVisible && 'display-tophead'}`">
+    <div
+      :class="`navbar__tophead-section ${
+        isTopHeadVisible && 'display-tophead'
+      }`"
+    >
       <div class="container navbar__tophead-section__container">
         <ul class="navbar__tophead-section__container__list">
           <li class="navbar__tophead-section__container__list__line">
@@ -55,7 +59,7 @@
 import { ref } from "vue";
 import { RouterLink, useRoute } from "vue-router";
 
-const isTopHeadVisible = ref<boolean>(false)
+const isTopHeadVisible = ref<boolean>(false);
 
 const route = useRoute();
 </script>
@@ -96,7 +100,6 @@ const route = useRoute();
           }
         }
       }
-
     }
   }
 
@@ -131,16 +134,13 @@ const route = useRoute();
   color: rgb(241, 169, 58);
 }
 
-@media screen and (max-width:425px) {
+@media screen and (max-width: 425px) {
   .navbar {
-
     &__tophead-section {
-        
-        visibility: hidden;
-        height: 0;
-        opacity: 0;
-        transition: height 0.5s,
-        opacity 0.5s linear;
+      visibility: hidden;
+      height: 0;
+      opacity: 0;
+      transition: height 0.5s, opacity 0.5s linear;
       &__container {
         &__list {
           display: flex;
@@ -156,7 +156,6 @@ const route = useRoute();
 
     &__bottomhead-section {
       &__container {
-
         &__bars-icon {
           display: block;
           margin-right: 20px;
@@ -166,7 +165,7 @@ const route = useRoute();
   }
 
   .display-tophead {
-    visibility:visible;
+    visibility: visible;
     height: 121.5px;
     opacity: 1;
   }
