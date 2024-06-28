@@ -68,7 +68,7 @@ const route = useRoute();
 
 //functions
 const hideMobileNavVisibility = () => {
-  console.log(window.innerWidth)
+  
   isTopHeadVisible.value = false;
 }
 
