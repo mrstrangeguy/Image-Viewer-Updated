@@ -1,5 +1,5 @@
 <template>
-  <div class="route-view-container">
+  <div class="container route-view-container">
     <div class="route-view-container__heading">
       <div class="route-view-container__heading__text">{{ title }}</div>
     </div>
@@ -22,6 +22,9 @@ defineProps<{
     background-color: white;
     padding: 15px;
     border-radius: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     &__text {
       text-align: center;

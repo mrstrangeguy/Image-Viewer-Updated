@@ -2,7 +2,7 @@
   <Backhome message="Back" :url="'/albums'" />
   <Loadingwarning v-if="isLoading" />
 
-  <div class="album-container" v-if="!isLoading && currentAlbumData?.url">
+  <div class="container album-container" v-if="!isLoading && currentAlbumData?.url">
     <div class="album-container__img__container">
       <img
         :src="currentAlbumData?.url"
@@ -52,7 +52,6 @@ onMounted(async () => {
 
 <style lang="scss" scoped>
 .album-container {
- 
   width: fit-content;
   background-color: white;
   border-radius: 30px;

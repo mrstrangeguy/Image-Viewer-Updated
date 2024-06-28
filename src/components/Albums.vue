@@ -89,10 +89,11 @@ onMounted(async () => {
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: auto;
   width: 100%;
+  grid-column-gap: 15px;
 }
 
 .card-container {
-  padding: 0px 15px;
+  // padding: 0px 15px;
   margin-bottom: 1.5em;
   &__card {
     padding: 15px;

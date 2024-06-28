@@ -7,7 +7,7 @@
         class="house-container__image-container__image"
       />
     </div>
-    <div class="house-container__description-1">
+    <div class="container house-container__description-1">
       <h2 class="house-container__description-1__heading">Description</h2>
       <div class="house-container__description-1__content">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro quo
@@ -74,7 +74,6 @@
   }
 
   &__description-1 {
-    max-width: 1600px;
     background-color: white;
     padding: 15px 25px;
     margin: 20px auto;

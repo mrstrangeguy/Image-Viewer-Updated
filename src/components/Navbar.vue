@@ -13,6 +13,7 @@
               :class="`navbar__tophead-section__container__list__line__link ${
                 route.fullPath === '/albums' && 'selected-route-colour '
               }`"
+              @click="hideMobileNavVisibility"
               >albums</RouterLink
             >
           </li>
@@ -22,6 +23,7 @@
               :class="`navbar__tophead-section__container__list__line__link ${
                 route.fullPath === '/contactus' && 'selected-route-colour '
               }`"
+              @click="hideMobileNavVisibility"
               >contact us</RouterLink
             >
           </li>
@@ -31,6 +33,7 @@
               :class="`navbar__tophead-section__container__list__line__link ${
                 route.fullPath === '/aboutus' && 'selected-route-colour '
               }`"
+              @click="hideMobileNavVisibility"
               >about us</RouterLink
             >
           </li>
@@ -38,12 +41,12 @@
       </div>
     </div>
     <div class="navbar__bottomhead-section">
-      <div class="navbar__bottomhead-section__container">
+      <div class="container navbar__bottomhead-section__container">
         <div class="navbar__bottomhead-section__container__title-logo">
           <img
             src="../images/titlelogo.png"
             class="navbar__bottomhead-section__container__title-logo__image"
-            alt=""
+            alt="navbar-bottom head image"
           />
         </div>
         <i
@@ -62,6 +65,13 @@ import { RouterLink, useRoute } from "vue-router";
 const isTopHeadVisible = ref<boolean>(false);
 
 const route = useRoute();
+
+//functions
+const hideMobileNavVisibility = () => {
+  console.log(window.innerWidth)
+  isTopHeadVisible.value = false;
+}
+
 </script>
 
 <style lang="scss" scoped>
@@ -78,13 +88,13 @@ const route = useRoute();
     border-top: 3px solid rgb(241, 169, 58);
     padding: 0px 15px;
     background-color: rgb(61, 61, 61);
-    transition: all 3s ease;
 
     &__container {
       &__list {
         margin: 0 auto;
         list-style: none;
         display: flex;
+        padding: 0;
 
         &__line {
           &__link {
@@ -105,8 +115,7 @@ const route = useRoute();
 
   &__bottomhead-section {
     &__container {
-      padding: 10px;
-      max-width: 1340px;
+      padding: 10px 0px;
       margin: 0 auto;
       display: flex;
       justify-content: space-between;
@@ -132,6 +141,18 @@ const route = useRoute();
 
 .selected-route-colour {
   color: rgb(241, 169, 58);
+}
+
+@media screen and (max-width:1800px) {
+
+  .navbar {
+
+  &__bottomhead-section {
+      &__container {
+        padding: 10px 15px;
+      }
+    }
+  }
 }
 
 @media screen and (max-width: 425px) {

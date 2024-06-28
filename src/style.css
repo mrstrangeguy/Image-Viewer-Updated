@@ -14,11 +14,10 @@ body {
 }
 
 .container {
-  max-width: 1360px;
+  max-width: 1800px;
   margin: 0 auto;
   line-height: 22.4px;
   letter-spacing: 0.3px;
-  padding: 0px 15px;
 }
 
 @font-face {
