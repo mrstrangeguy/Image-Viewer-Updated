@@ -4,6 +4,7 @@
   line-height: 24px;
   font-family: "Roboto", sans-serif;
   font-family: Montreal;
+  scrollbar-gutter: stable;
 }
 
 /* html {

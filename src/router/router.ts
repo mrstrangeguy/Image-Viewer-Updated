@@ -16,6 +16,17 @@ const routes = [
 const router = createRouter({
   history: createWebHistory(),
   routes,
+  scrollBehavior(to, __, savedPosition) {
+    if (to.fullPath === "/albums") {
+      if (savedPosition) return savedPosition;
+
+      const element = document.getElementById("selected-album");
+
+      if (element) return { top: element.offsetTop - 150, left: 0 };
+    } else {
+      return { top: 0 };
+    }
+  },
 });
 
 export default router;

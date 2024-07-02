@@ -47,6 +47,7 @@
             src="../images/titlelogo.png"
             class="navbar__bottomhead-section__container__title-logo__image"
             alt="navbar-bottom head image"
+            @click="routeToHome"
           />
         </div>
         <i
@@ -60,18 +61,23 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
-import { RouterLink, useRoute } from "vue-router";
+import { RouterLink, useRoute, useRouter } from "vue-router";
 
 const isTopHeadVisible = ref<boolean>(false);
 
 const route = useRoute();
+const router = useRouter();
 
 //functions
 const hideMobileNavVisibility = () => {
-  
   isTopHeadVisible.value = false;
-}
+};
 
+const routeToHome = () => {
+  router.push({
+    path: "/",
+  });
+};
 </script>
 
 <style lang="scss" scoped>
@@ -129,6 +135,7 @@ const hideMobileNavVisibility = () => {
           height: 75px;
           border-radius: 50px;
           border: 1px solid lightgray;
+          cursor: pointer;
         }
       }
 
@@ -143,11 +150,9 @@ const hideMobileNavVisibility = () => {
   color: rgb(241, 169, 58);
 }
 
-@media screen and (max-width:1800px) {
-
+@media screen and (max-width: 1800px) {
   .navbar {
-
-  &__bottomhead-section {
+    &__bottomhead-section {
       &__container {
         padding: 10px 15px;
       }

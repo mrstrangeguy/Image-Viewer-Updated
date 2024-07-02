@@ -2,7 +2,10 @@
   <Backhome message="Back" :url="'/albums'" />
   <Loadingwarning v-if="isLoading" />
 
-  <div class="container album-container" v-if="!isLoading && currentAlbumData?.url">
+  <div
+    class="container album-container"
+    v-if="!isLoading && currentAlbumData?.url"
+  >
     <div class="album-container__img__container">
       <img
         :src="currentAlbumData?.url"
@@ -42,7 +45,7 @@ const isLoading = ref<boolean>(true);
 //onMounted
 onMounted(async () => {
   const { id } = route.params;
-  
+
   currentAlbumData.value = albumStore.albums.find(
     (elem: albumType) => `${elem.id}` === id
   );
@@ -65,17 +68,17 @@ onMounted(async () => {
   width: 100%;
 
   &__img__container {
-      display: flex;
-      justify-content: start;
-      min-width: 600px;
-      min-height: 600px;
-      aspect-ratio: 1/1;
+    display: flex;
+    justify-content: start;
+    min-width: 600px;
+    min-height: 600px;
+    aspect-ratio: 1/1;
 
-      &__img {
-        display: block;
-        aspect-ratio: 1/1;
-      }
+    &__img {
+      display: block;
+      aspect-ratio: 1/1;
     }
+  }
 
   &__description {
     width: 100%;

@@ -2,8 +2,18 @@
   <Backhome message="Back To home" :url="'/'" />
   <Loadingwarning v-if="!albumStore.albums.length && isLoading" />
   <div class="container">
-    <div class="albums__grid" id="album-grid" v-if="albumStore.albums">
-      <div class="card-container" v-for="(elem) in albumStore.albums" ref="currentView">
+    <div
+      class="albums__grid"
+      id="album-grid"
+      v-if="albumStore.albums"
+      ref="albumsGrid"
+    >
+      <div
+        class="card-container"
+        v-for="elem in albumStore.albums"
+        ref="currentView"
+        :id="`${albumStore.selectedAlbumId === elem.id && 'selected-album'}`"
+      >
         <div class="card-container__card">
           <div class="card-container__card__image-wrapper">
             <img
@@ -13,31 +23,38 @@
             />
           </div>
 
-          <div class="card-container__card__section2" >
+          <div class="card-container__card__section2">
             <div class="card-container__card__section2__content">
               <p class="card-container__card__section2__content__paragraph">
                 {{ elem?.title }}
               </p>
             </div>
             <div class="card-container__card__section2__btn-wrapper">
-              <button class="card-container__card__section2__btn-wrapper__btn" @click="routeToDetailsPage(elem.id)">
-                View Image 
+              <button
+                class="card-container__card__section2__btn-wrapper__btn"
+                @click="routeToDetailsPage(elem.id)"
+              >
+                View Details
               </button>
             </div>
           </div>
         </div>
       </div>
     </div>
-  
-  </div>
-  <div class="infinite-scroll" v-if="albumStore.albums.length && isLoading">
-      <img src="../gifs/loading.gif" class="infinite-scroll__img" alt="">
+    <div
+      id="infinite-scroll"
+      class="infinite-scroll"
+      v-if="isinfiniteScrollTrue"
+      ref="infiniteScrollBufferRef"
+    >
+      <img src="../gifs/loading.gif" class="infinite-scroll__img" alt="" />
     </div>
+  </div>
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref } from "vue";
-import { useRoute,useRouter } from "vue-router";
+import { computed, onMounted, ref, watch } from "vue";
+import { useRoute, useRouter } from "vue-router";
 import axios from "axios";
 
 import { useAlbumsStore } from "../stores/albumStorage";
@@ -49,19 +66,24 @@ const isLoading = ref<boolean>(true);
 const route = useRoute();
 const router = useRouter();
 const currentView = ref(null);
+const infiniteScrollBufferRef = ref<any>(null);
+const bottomScrollLevel = ref<any>();
+const sample = ref();
+const albumsGrid = ref();
 
 //functions
 const handleInfiniteScroll = () => {
-  if(route.fullPath !== '/albums') return
-  const difference = document.documentElement.scrollHeight - window.innerHeight;
-  const bottomScrollLevel = difference - document.documentElement.scrollTop;
+  if (route.fullPath !== "/albums") return;
+  let bufferDivHeight = infiniteScrollBufferRef.value?.clientHeight || 0;
 
-  if (bottomScrollLevel === 0) {
+  const difference = document.documentElement.scrollHeight - window.innerHeight;
+  bottomScrollLevel.value =
+    difference - document.documentElement.scrollTop - bufferDivHeight;
+
+  if (bottomScrollLevel.value <= 0) {
     albumStore.fetchCount += 20;
     fetchData();
-    
   }
-
 };
 
 const fetchData = async () => {
@@ -83,29 +105,34 @@ const fetchData = async () => {
   };
 };
 
-const routeToDetailsPage = (id:number) => {
+const routeToDetailsPage = (id: number) => {
   router.push({
-    path:`/albums/${id}`
-  })
+    path: `/albums/${id}`,
+  });
 
-  albumStore.scrollLevel = document.documentElement.scrollTop;
-}
+  albumStore.selectedAlbumId = id;
+};
 
+const scrollToSection = () => {
+  if (!sample.value) return;
+  sample.value.scrollIntoView({ behaviour: "smooth" });
+};
 
 //onMounted
 onMounted(() => {
-  !albumStore.albums.length ? fetchData() :isLoading.value = false;
- 
-  console.log(document.documentElement.scrollTop)
-  console.log(albumStore.scrollLevel)
-  document.documentElement.scrollTop = 5000
-
+  scrollToSection();
+  !albumStore.albums.length ? fetchData() : (isLoading.value = false);
 });
 
+//computed
+const isinfiniteScrollTrue = computed(() => {
+  return albumStore.albums.length && isLoading;
+});
 
 //watch
-
-
+watch(albumStore.albums, () => {
+  if (albumStore.albums.length) sample.value.scrollIntoView();
+});
 </script>
 
 <style lang="scss" scoped>
@@ -115,7 +142,6 @@ onMounted(() => {
   grid-template-rows: auto;
   width: 100%;
   grid-column-gap: 15px;
-
 }
 
 .card-container {
@@ -162,27 +188,26 @@ onMounted(() => {
           font-weight: 700;
           cursor: pointer;
 
-        
-            color: rgb(219, 131, 30);
-            text-decoration: underline;
-            text-underline-offset: 7px;
-            text-decoration-thickness: 2px;
-            text-align: center;
-          
+          color: rgb(219, 131, 30);
+          text-decoration: underline;
+          text-underline-offset: 7px;
+          text-decoration-thickness: 2px;
+          text-align: center;
         }
       }
     }
   }
 }
 
-.infinite-scroll {
+#infinite-scroll {
   padding: 10px 0px;
   display: flex;
   justify-content: center;
   background-color: white;
   margin-bottom: 15px;
   border-radius: 20px;
- 
+  width: 100%;
+
   &__img {
     display: block;
   }

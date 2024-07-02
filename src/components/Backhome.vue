@@ -1,8 +1,15 @@
 <template>
   <div class="container back-to-home-container">
     <div class="back-to-home-container__para">
-      <i class="fa-solid fa-arrow-left back-to-home-container__para__icon" @click="goToSpecifiedRoute"></i
-      > <span class="back-to-home-container__para__link" @click="goToSpecifiedRoute">{{message}}</span>
+      <i
+        class="fa-solid fa-arrow-left back-to-home-container__para__icon"
+        @click="goToSpecifiedRoute"
+      ></i>
+      <span
+        class="back-to-home-container__para__link"
+        @click="goToSpecifiedRoute"
+        >{{ message }}</span
+      >
     </div>
   </div>
 </template>
@@ -22,10 +29,10 @@ const router = useRouter();
 //function
 
 const goToSpecifiedRoute = () => {
-   router.push({
-    path:props.url
-   })
-}
+  router.push({
+    path: props.url,
+  });
+};
 </script>
 
 <style lang="scss" scoped>
@@ -52,7 +59,7 @@ const goToSpecifiedRoute = () => {
 
     &__link:hover {
       color: purple;
-    } 
+    }
   }
 }
 </style>
