@@ -7,9 +7,9 @@
         class="house-container__image-container__image"
       />
     </div>
-    <div class="container house-container__description-1">
-      <h2 class="house-container__description-1__heading">Description</h2>
-      <div class="house-container__description-1__content">
+    <div class="container house-container__description">
+      <h2 class="house-container__description__heading">Description</h2>
+      <p class="house-container__description__content">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro quo
         dolorem temporibus itaque nisi laboriosam commodi id ipsum, et voluptate
         non quasi saepe voluptatum iusto natus nihil quibusdam corporis
@@ -55,7 +55,7 @@
         facilis! Quam accusantium culpa obcaecati aliquam facere error sunt
         voluptatibus, laudantium repudiandae in excepturi dolorum earum esse
         ratione, animi voluptatum!
-      </div>
+      </p>
     </div>
   </div>
 </template>
@@ -73,7 +73,7 @@
     }
   }
 
-  &__description-1 {
+  &__description {
     background-color: white;
     padding: 15px 25px;
     margin: 20px auto;
@@ -85,6 +85,7 @@
     }
     &__content {
       line-height: 30px;
+      margin: 0;
     }
   }
 }

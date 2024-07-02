@@ -6,11 +6,18 @@
   font-family: Montreal;
 }
 
+/* html {
+  height: 100%;
+  overflow: auto;
+} */
+
 body {
   position: relative;
   padding: 0px;
   margin: 0;
   background-color: rgb(250, 247, 242);
+  /* height: 100%; */
+  scrollbar-gutter: stable;
 }
 
 .container {

@@ -42,7 +42,7 @@ const isLoading = ref<boolean>(true);
 //onMounted
 onMounted(async () => {
   const { id } = route.params;
-
+  
   currentAlbumData.value = albumStore.albums.find(
     (elem: albumType) => `${elem.id}` === id
   );
@@ -64,6 +64,19 @@ onMounted(async () => {
   margin-right: auto;
   width: 100%;
 
+  &__img__container {
+      display: flex;
+      justify-content: start;
+      min-width: 600px;
+      min-height: 600px;
+      aspect-ratio: 1/1;
+
+      &__img {
+        display: block;
+        aspect-ratio: 1/1;
+      }
+    }
+
   &__description {
     width: 100%;
     &__id {
@@ -71,16 +84,6 @@ onMounted(async () => {
       &__tag {
         font-size: 20px;
         margin: 0%;
-      }
-    }
-
-    &__img__container {
-      display: flex;
-      justify-content: start;
-
-      &__img {
-        display: block;
-        aspect-ratio: 1/1;
       }
     }
 
@@ -97,6 +100,8 @@ onMounted(async () => {
 @media screen and (max-width: 1200px) {
   .album-container {
     &__img__container {
+      min-width: 300px;
+      min-height: 300px;
       &__img {
         aspect-ratio: 300/300;
         width: 100%;
@@ -111,8 +116,12 @@ onMounted(async () => {
     gap: 18px;
     flex-direction: column;
     &__img__container {
+      width: 100%;
+      min-width: 100%;
+      min-height: 300px;
+      background-color: lightblue;
       &__img {
-        aspect-ratio: 300/300;
+        aspect-ratio: 1/1;
         width: 100%;
       }
     }

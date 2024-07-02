@@ -1,6 +1,6 @@
 <template>
   <div class="loading-container">
-    <p class="loading-container__para">Loading Data...</p>
+    <div class="loading-container__text">Loading Data...</div>
     <img class="loading-container__img" src="../gifs/loading.gif" alt="" />
   </div>
 </template>
@@ -17,7 +17,7 @@
   aspect-ratio: 1504/400;
   position: relative;
 
-  &__para {
+  &__text {
     margin-right: 25px;
     font-size: 22px;
   }
@@ -30,7 +30,7 @@
 
 @media screen and (max-width: 1200px) {
   .loading-container {
-    &__para {
+    &__text {
       margin-right: 25px;
       font-size: 18px;
     }
@@ -43,7 +43,7 @@
 
 @media screen and (max-width: 900px) {
   .loading-container {
-    &__para {
+    &__text {
       display: none;
     }
     &__img {

@@ -3,7 +3,7 @@
     <div class="route-view-container__heading">
       <div class="route-view-container__heading__text">{{ title }}</div>
     </div>
-    <div class="route-view-container__description">{{ message }}</div>
+    <p class="route-view-container__description">{{ message }}</p>
   </div>
 </template>
 
@@ -36,7 +36,7 @@ defineProps<{
 
   &__description {
     background-color: white;
-    margin-top: 25px;
+    margin: 25px 0px 0px 0px;
     padding: 15px;
     border-radius: 30px;
   }

@@ -4,8 +4,12 @@ import { albumType } from "../types/albumType";
 
 export const useAlbumsStore = defineStore("albumStore", () => {
   const albums = ref<albumType[]>([]);
+  const fetchCount = ref<number>(20);
+  const scrollLevel = ref<number>(0);
 
   return {
     albums,
+    fetchCount,
+    scrollLevel
   };
 });

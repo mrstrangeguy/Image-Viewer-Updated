@@ -1,9 +1,9 @@
 <template>
   <div class="container back-to-home-container">
-    <p class="back-to-home-container__para">
+    <div class="back-to-home-container__para">
       <i class="fa-solid fa-arrow-left back-to-home-container__para__icon" @click="goToSpecifiedRoute"></i
-      > <pre class="back-to-home-container__para__link" @click="goToSpecifiedRoute">{{message}}</pre>
-    </p>
+      > <span class="back-to-home-container__para__link" @click="goToSpecifiedRoute">{{message}}</span>
+    </div>
   </div>
 </template>
 
