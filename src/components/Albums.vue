@@ -3,7 +3,7 @@
   <Loadingwarning v-if="!albumStore.albums.length && isLoading" />
   <div class="container">
     <div class="albums__grid" id="album-grid" v-if="albumStore.albums">
-      <div class="card-container" v-for="(elem,index) in albumStore.albums" ref="currentView">
+      <div class="card-container" v-for="(elem) in albumStore.albums" ref="currentView">
         <div class="card-container__card">
           <div class="card-container__card__image-wrapper">
             <img
