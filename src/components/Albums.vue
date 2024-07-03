@@ -24,16 +24,14 @@
           </div>
 
           <div class="card-details-section">
-            
             <div class="card-details-section__title">{{ elem?.title }}</div>
 
-              <button
-                class="card-details-section__button"
-                @click="routeToDetailsPage(elem.id)"
-              >
-                View Details
-              </button>
-          
+            <button
+              class="card-details-section__button"
+              @click="routeToDetailsPage(elem.id)"
+            >
+              View Details
+            </button>
           </div>
         </div>
       </div>
@@ -44,7 +42,11 @@
       v-if="isinfiniteScrollTrue"
       ref="infiniteScrollBufferRef"
     >
-      <img src="../gifs/loading.gif" class="infinite-scroll__img" alt="loading gif" />
+      <img
+        src="../gifs/loading.gif"
+        class="infinite-scroll__img"
+        alt="loading gif"
+      />
     </div>
   </div>
 </template>
@@ -59,7 +61,8 @@ import Backhome from "./Backhome.vue";
 import Loadingwarning from "./Loadingwarning.vue";
 
 //constant values
-const INCREMENT_RATE = 20;
+const COUNT_INCREMENT_RATE = 20;
+const BOTTOM_SCROLL_LIMIT = 0;
 
 const albumStore = useAlbumsStore();
 const isLoading = ref<boolean>(true);
@@ -76,10 +79,11 @@ const handleInfiniteScroll = () => {
   let bufferDivHeight = infiniteScrollBufferRef.value?.clientHeight || 0;
 
   const difference = document.documentElement.scrollHeight - window.innerHeight;
-  const bottomScrollLevel = difference - document.documentElement.scrollTop - bufferDivHeight;
+  const bottomScrollLevel =
+    difference - document.documentElement.scrollTop - bufferDivHeight;
 
-  if (bottomScrollLevel <= 0) {
-    albumStore.fetchCount += INCREMENT_RATE;
+  if (bottomScrollLevel <= BOTTOM_SCROLL_LIMIT) {
+    albumStore.fetchCount += COUNT_INCREMENT_RATE;
     fetchData();
   }
 };
@@ -143,7 +147,6 @@ watch(albumStore.albums, () => {
 }
 
 .card-container {
- 
   margin-bottom: 1.5em;
   &__card {
     padding: 15px;
@@ -170,12 +173,12 @@ watch(albumStore.albums, () => {
   flex-direction: column;
   justify-content: space-between;
   height: 100%;
- &__title {
-  font-family: Montreal;
-   margin: 10px 0px;
- }
+  &__title {
+    font-family: Montreal;
+    margin: 10px 0px;
+  }
 
- &__button {
+  &__button {
     text-transform: uppercase;
     font-family: Montreal2;
     border: 0;
@@ -190,9 +193,7 @@ watch(albumStore.albums, () => {
     text-align: center;
     display: block;
     margin: 0 auto;
- }
-
-  
+  }
 }
 
 #infinite-scroll-indicator {
@@ -214,33 +215,29 @@ watch(albumStore.albums, () => {
     grid-template-columns: 1fr 1fr;
   }
 
- 
-    .card-details-section {
-      &__title {
-        text-align: center;
-      }
-
-      &__button {
-        font-size: 14px;
-      }
+  .card-details-section {
+    &__title {
+      text-align: center;
     }
-  
+
+    &__button {
+      font-size: 14px;
+    }
+  }
 }
 
 @media screen and (max-width: 720px) {
   .albums__grid {
     grid-template-columns: 1fr;
-  }  
-}
-
-@media screen and (max-width:425px) {
-  
-    .card-details-section {
-      &__title,&__button {
-        font-size: 14px;
-      } 
-      
   }
 }
 
+@media screen and (max-width: 425px) {
+  .card-details-section {
+    &__title,
+    &__button {
+      font-size: 14px;
+    }
+  }
+}
 </style>

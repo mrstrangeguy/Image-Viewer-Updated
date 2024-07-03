@@ -31,7 +31,7 @@
             <RouterLink
               to="/aboutus"
               :class="`navbar__tophead-section__container__list__line__link ${
-                route.fullPath === '/aboutus' && 'selected-route-colour '
+                route.fullPath === '/aboutus' && 'selected-route-colour'
               }`"
               @click="hideMobileNavVisibility"
               >about us</RouterLink
