@@ -1,5 +1,5 @@
 <template>
-  <Backhome message="Back To home" :url="'/'" />
+  <Backhome message="Back To home" url="/" />
   <Loadingwarning v-if="!albumStore.albums.length && isLoading" />
   <div class="container">
     <div
@@ -120,9 +120,7 @@ onMounted(() => {
 });
 
 //computed
-const isinfiniteScrollTrue = computed(() => {
-  return albumStore.albums.length && isLoading;
-});
+const isinfiniteScrollTrue = computed(() => albumStore.albums.length && isLoading );
 
 </script>
 

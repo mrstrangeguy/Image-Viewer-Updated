@@ -1,5 +1,5 @@
 <template>
-  <Backhome message="Back To home" :url="'/'" />
+  <Backhome message="Back To home" url="/" />
   <div>
     <Pagetemplate title="Contact Us" :message="message" />
   </div>

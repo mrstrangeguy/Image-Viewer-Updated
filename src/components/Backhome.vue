@@ -1,12 +1,12 @@
 <template>
   <div class="container back-to-home-container">
-    <div class="back-to-home-container__para">
+    <div class="back-to-home-container__message">
       <i
-        class="fa-solid fa-arrow-left back-to-home-container__para__icon"
+        class="fa-solid fa-arrow-left back-to-home-container__message__icon"
         @click="goToSpecifiedRoute"
       />
       <span
-        class="back-to-home-container__para__link"
+        class="back-to-home-container__message__link"
         @click="goToSpecifiedRoute"
         >{{ message }}</span
       >
@@ -42,7 +42,7 @@ const goToSpecifiedRoute = () => {
   border-radius: 15px;
   margin-bottom: 20px;
 
-  &__para {
+  &__message {
     margin: 0;
 
     &__icon {

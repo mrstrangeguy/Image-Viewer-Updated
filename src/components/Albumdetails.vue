@@ -1,5 +1,5 @@
 <template>
-  <Backhome message="Back" :url="'/albums'" />
+  <Backhome message="Back" url="/albums" />
   <Loadingwarning v-if="isLoading" />
 
   <div
