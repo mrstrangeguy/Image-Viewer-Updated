@@ -9,13 +9,14 @@
     <div class="album-container__img__container">
       <img
         :src="currentAlbumData?.url"
+        alt="album image"
         class="album-container__img__container__img"
       />
     </div>
     <div class="album-container__description">
       <div class="album-container__description__id">
         <h5 class="album-container__description__id__tag">
-          Id: {{ currentAlbumData?.id }}
+           {{ `ID:${currentAlbumData?.id}` }}
         </h5>
       </div>
       <div class="album-container__description__title">
@@ -32,9 +33,9 @@ import { onMounted, ref } from "vue";
 import { useRoute } from "vue-router";
 
 import { albumType } from "../types/albumType";
+import { useAlbumsStore } from "../stores/albumStorage";
 import Loadingwarning from "./Loadingwarning.vue";
 import Backhome from "./Backhome.vue";
-import { useAlbumsStore } from "../stores/albumStorage";
 
 const albumStore = useAlbumsStore();
 
@@ -44,10 +45,10 @@ const isLoading = ref<boolean>(true);
 
 //onMounted
 onMounted(async () => {
-  const { id } = route.params;
+  const id  = Number(route?.params?.id);
 
   currentAlbumData.value = albumStore.albums.find(
-    (elem: albumType) => `${elem.id}` === id
+    (elem: albumType) => elem.id === id
   );
   if (currentAlbumData.value) isLoading.value = false;
 });

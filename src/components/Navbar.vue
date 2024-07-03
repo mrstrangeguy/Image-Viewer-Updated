@@ -11,7 +11,7 @@
             <RouterLink
               to="/albums"
               :class="`navbar__tophead-section__container__list__line__link ${
-                route.fullPath === '/albums' && 'selected-route-colour '
+                route.fullPath === '/albums' && 'selected-route-colour'
               }`"
               @click="hideMobileNavVisibility"
               >albums</RouterLink
@@ -21,7 +21,7 @@
             <RouterLink
               to="/contactus"
               :class="`navbar__tophead-section__container__list__line__link ${
-                route.fullPath === '/contactus' && 'selected-route-colour '
+                route.fullPath === '/contactus' && 'selected-route-colour'
               }`"
               @click="hideMobileNavVisibility"
               >contact us</RouterLink

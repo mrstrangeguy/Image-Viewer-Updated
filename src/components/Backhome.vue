@@ -4,7 +4,7 @@
       <i
         class="fa-solid fa-arrow-left back-to-home-container__para__icon"
         @click="goToSpecifiedRoute"
-      ></i>
+      />
       <span
         class="back-to-home-container__para__link"
         @click="goToSpecifiedRoute"

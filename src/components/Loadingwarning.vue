@@ -1,7 +1,7 @@
 <template>
   <div class="loading-container">
     <div class="loading-container__text">Loading Data...</div>
-    <img class="loading-container__img" src="../gifs/loading.gif" alt="" />
+    <img class="loading-container__img" src="../gifs/loading.gif" alt="loading gif" />
   </div>
 </template>
 

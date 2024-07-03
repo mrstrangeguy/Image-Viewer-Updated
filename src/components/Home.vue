@@ -3,7 +3,7 @@
     <div class="house-container__image-container">
       <img
         src="../images/benner_image.jpg"
-        alt=""
+        alt="banner image"
         class="house-container__image-container__image"
       />
     </div>
