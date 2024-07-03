@@ -6,7 +6,6 @@
       class="albums__grid"
       id="album-grid"
       v-if="albumStore.albums"
-      ref="albumsGrid"
     >
       <div
         class="card-container"
@@ -52,7 +51,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, onMounted, ref, watch } from "vue";
+import { computed, onMounted, ref } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import axios from "axios";
 
@@ -70,8 +69,7 @@ const route = useRoute();
 const router = useRouter();
 const currentView = ref(null);
 const infiniteScrollBufferRef = ref<any>(null);
-const sample = ref();
-const albumsGrid = ref();
+
 
 //functions
 const handleInfiniteScroll = () => {
@@ -115,14 +113,9 @@ const routeToDetailsPage = (id: number) => {
   albumStore.selectedAlbumId = id;
 };
 
-const scrollToSection = () => {
-  if (!sample.value) return;
-  sample.value.scrollIntoView({ behaviour: "smooth" });
-};
 
 //onMounted
 onMounted(() => {
-  scrollToSection();
   !albumStore.albums.length ? fetchData() : (isLoading.value = false);
 });
 
@@ -131,10 +124,6 @@ const isinfiniteScrollTrue = computed(() => {
   return albumStore.albums.length && isLoading;
 });
 
-//watch
-watch(albumStore.albums, () => {
-  if (albumStore.albums.length) sample.value.scrollIntoView();
-});
 </script>
 
 <style lang="scss" scoped>
